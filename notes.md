@@ -2,3 +2,5 @@
 - <nav> in a sidebar menu to be recalled by a click on an icon
 - back button instead of home
 - add description of the events in each page
+- add a favicon (.ico format)
+- add classes and IDs in <div>s and <span>s
