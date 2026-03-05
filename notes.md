@@ -4,3 +4,4 @@
 - add description of the events in each page
 - add a favicon (.ico format)
 - add classes and IDs in <div>s and <span>s
+- modify the table to the foot a unique line with background at the end of the table
