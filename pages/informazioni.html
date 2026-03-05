@@ -5,23 +5,31 @@
         color: bisque;
         background-color: cornflowerblue;
     }
-    a {
+    button {
         color: whitesmoke;
         background-color: deepskyblue;
     }
-    table, th, td {
-        border:1px solid black;
+    thead, tbody {
+        width:100%; 
+        background-color: azure;
+    }
+    tfoot {
+        color:red; 
+        background-color: blanchedalmond;
     }
     div {
         background-color: beige;
     }
 </style>
+<head>
+    <title>FAM - Informazioni</title>
+    <link rel="icon" type="image/x-icon" href="/data/ico.png">
+</head>
 <body>
-<title>FAM - Informazioni</title>
 
 <h1>FAM - Informazioni</h1>
 
-<a href="/index.html">Home</a>
+<a href="/index.html"><button>Indietro</button></a>
 
 <div>
   <h2>Orari e luogo</h2>
@@ -32,7 +40,7 @@
 
 <h2>Eventi</h2>
 
-<table style="width:100%; background-color: azure;">
+<table>
   <thead>
     <tr>
       <th>Evento</th>
@@ -63,10 +71,10 @@
     </tr>
   </tbody>
   <tfoot>
-    <p style="color:red; background-color: blanchedalmond;">L'ingresso per ciascun evento è consentito fino a 10 minuti prima dell'orario indicato.</p>
+    <td colspan="3">L'ingresso per ciascun evento è consentito fino a 10 minuti prima dell'orario indicato.</td>
   </tfoot>
 </table>
-
+<p>&nbsp;</p>
 <img src="/data/carrara.jpg" alt="Scultura di Carrara." style="width:600px;height:300px;">
 
 </body>
