@@ -3,6 +3,7 @@
 <style>
     html {
         background-color: lightskyblue;
+        color: azure;
     }    
     .Titolo {
         color: bisque;
@@ -12,9 +13,18 @@
         color: whitesmoke;
         background-color: deepskyblue;
     }
-    thead, tbody {
+    .Tabella h2 {
+      background-color: dodgerblue;
+    }
+    thead {
+      width:100%;
+      background-color: beige;
+      color: maroon;
+    } 
+    tbody {
         width:100%; 
         background-color: azure;
+        color:maroon;
     }
     tfoot {
         color:red; 
@@ -22,6 +32,7 @@
     }
     #Info {
         background-color: beige;
+        color: maroon;
     }
 </style>
 <head>
@@ -41,9 +52,9 @@
   <p>Indirizzo: Via Plebiscito, 8/A, 54033 Carrara MS</p>
 </div>
 
-<h2>Eventi</h2>
-
+<div class="Tabella">
 <table>
+  <h2>Eventi</h2>
   <thead>
     <tr>
       <th>Evento</th>
@@ -77,6 +88,7 @@
     <td colspan="3">L'ingresso per ciascun evento è consentito fino a 10 minuti prima dell'orario indicato.</td>
   </tfoot>
 </table>
+</div>
 <p>&nbsp;</p>
 <img src="/data/carrara.jpg" alt="Scultura di Carrara." style="width:600px;height:300px;">
 
