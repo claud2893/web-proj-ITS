@@ -4,3 +4,4 @@
 - create a unique .CSS
 - use a blurred background with each image for page
 - use a black based stile for .Titolo/#Presentazione
+- footer "2026 - Apulia Digital Molfetta - Developers" (bold)
