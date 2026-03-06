@@ -1,0 +1,27 @@
+    body {
+        background-color: lightskyblue;
+    }
+    #Presentazione {
+        color: bisque;
+        background-color: cornflowerblue;
+    }
+    nav {
+        background-color: brown;
+    }
+    nav > a {
+        color: white;
+    }
+    .Cit {
+        background-color: blanchedalmond;
+    }
+    button {
+        color: whitesmoke;
+        background-color: deepskyblue;
+    }
+    .Descrizione {
+        background-color: sandybrown;
+    }
+    .Titolo {
+        color: bisque;
+        background-color: cornflowerblue;
+    }
