@@ -1,7 +1,5 @@
 ## Implementations to consider
-- <nav> in a sidebar menu to be recalled by a click on an icon (using an iframe?)
-- set the language for each HTML page
-- create a unique .CSS
+- instead of "indietro" button, use a dropdown "menu" div class with a nested "content" class
 - use a blurred background with each image for page
 - use a black based stile for .Titolo/#Presentazione
-- footer "2026 - Apulia Digital Molfetta - Developers" (bold)
+- insert a form to enroll to workshops
