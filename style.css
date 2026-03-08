@@ -2,13 +2,15 @@
         height: 100%;
     }
     body {
-        background-image: url("/data/index_img.jpeg");
         color: azure;
         font-family:Georgia, 'Times New Roman', Times, serif;
         height: 100%;
         display: flex;
         flex-direction: column;
         margin: 0;
+    }
+    body, .Menu-List {
+        background-image: url("/data/index_img.jpeg");
     }
     .Titolo {
         color: bisque;
@@ -38,9 +40,21 @@
         padding: 8px;
         line-height: 1.5;
     }
-    button {
-        color: whitesmoke;
-        background-color: deepskyblue;
+    .Menu {
+        position: relative;
+        background-color: black;
+        color: bisque;
+        text-align: center;
+        line-height: 2.0;
+    }
+    .Menu:hover .Menu-List{
+        display: block;
+        position: relative;
+    }
+    .Menu-List {
+        display: none;
+        position: absolute;
+        line-height: 1.2;
     }
     .Descrizione {
         background-color: sandybrown;
