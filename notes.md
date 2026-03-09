@@ -1,5 +1,5 @@
 ## Implementations to consider
-- instead of "indietro" button, use a dropdown "menu" div class with a nested "content" class
-- use a blurred background with each image for page
-- use a black based stile for .Titolo/#Presentazione
 - insert a form to enroll to workshops
+- adjust "informazioni" page style
+- make all the images appear at the center of the screen
+- iframe with video in the home page
