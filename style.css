@@ -57,13 +57,25 @@
         line-height: 1.2;
     }
     .Descrizione {
-        background-color: sandybrown;
+        background-color: grey;
+        opacity: 0.8;
+        padding: 8px;
     }
     .Evento {
-        background-color: lightcoral;
+        background-color: brown;
+        color: burlywood;
+        opacity: 0.9;
     }
-    .Evento blockquote {
-        background-color: lightsalmon;
+    .Cit-Evento {
+        background-color: blanchedalmond;
+        color: brown;
+        padding: 8px;
+        line-height: 1.5;
+        opacity: 0.75;
+        text-align: center;
+    }
+    img {
+        padding: 16px;
     }
     .Tabella h2 {
       background-color: dodgerblue;
