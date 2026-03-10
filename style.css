@@ -10,7 +10,7 @@
         margin: 0;
     }
     body, .Menu-List {
-        background-image: url("/data/index_img.jpeg");
+        background-image: url("/images/index_img.jpeg");
     }
     .Titolo {
         color: bisque;
