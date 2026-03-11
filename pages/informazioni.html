@@ -66,7 +66,62 @@
   </tfoot>
 </table>
 </div>
-<p>&nbsp;</p>
+<div class="Iscrizione">
+    <h3>Prenota il tuo posto per uno o più workshop:</h3>
+  <form>
+    <label for="nome">Nome</label><br>
+    <input type="text" id="nome" name="nome" value=""><br>
+    <label for="cognome">Cognome:</label><br>
+    <input type="text" id="cognome" name="cognome" value=""><br>
+    <div class="workshops-container">
+      <div class="MultiEvento">
+        <input type="checkbox" id="digital_painting" name="digital_painting" value="Digital Painting">
+        <label for="digital_painting"><b>Dipingere l'oceano</b></label><br>
+          <input type="radio" id="turno1" name="turno" value="17.00-17.50">
+          <label for="turno1">Turno 1: 17.00 - 17.50</label><br>
+          <input type="radio" id="turno2" name="turno" value="18.00-18.50">
+          <label for="turno2">Turno 2: 18.00 - 18.50</label><br>
+          <input type="radio" id="turno3" name="turno" value="19.10-20.00">
+          <label for="turno3">Turno 3: 19.10 - 20.00</label><br>
+      </div>
+      <div class="MultiEvento">
+        <input type="checkbox" id="3d_printed_scuplure" name="3d_printed_scuplure" value="3D Printed Sculpture">
+        <label for="3d_printed_scuplure"><b>Scultura con materiali ecologici</b></label><br>
+          <input type="radio" id="turno1" name="turno" value="10.00-10.50">
+          <label for="turno1">Turno 1: 10.00 - 10.50</label><br>
+          <input type="radio" id="turno2" name="turno" value="11.00-11.50">
+          <label for="turno2">Turno 2: 11.00 - 11.50</label><br>
+          <input type="radio" id="turno3" name="turno" value="12.10-13.00">
+          <label for="turno3">Turno 3: 12.10 - 13.00</label><br>
+      </div>
+      <div class="MultiEvento">
+          <input type="checkbox" id="virtual_reality" name="virtual_reality" value="Virtual Reality">
+          <label for="virtual_reality"><b>Realtà artistico-letterarie dell'Ottocento</b></label><br>
+            <input type="radio" id="turno1" name="turno" value="11.00-11.50">
+            <label for="turno1">Turno 1: 11.00 - 11.50</label><br>
+            <input type="radio" id="turno2" name="turno" value="12.00-12.50">
+            <label for="turno2">Turno 2: 12.00 - 12.50</label><br>
+            <input type="radio" id="turno3" name="turno" value="13.00-13.50">
+            <label for="turno3">Turno 3: 13.00 - 13.50</label><br>
+            <input type="radio" id="turno4" name="turno" value="14.00-14.50">
+            <label for="turno4">Turno 4: 14.50 - 14.50</label><br>
+            <input type="radio" id="turno5" name="turno" value="15.10-16.00">
+            <label for="turno5">Turno 5: 15.10 - 16.00</label><br>
+      </div>
+      <div class="MultiEvento">
+          <input type="checkbox" id="spatial_video-sound_art" name="spatial_video-sound_art" value="Spatial video-sound art">
+          <label for="spatial_video-sound_art"><b>Brian Eno 2.0: ripensare l'ambient visuale e sonoro</b></label><br>
+            <input type="radio" id="turno1" name="turno" value="16.00-16.50">
+            <label for="turno1">Turno 1: 16.00 - 16.50</label><br>
+            <input type="radio" id="turno2" name="turno" value="17.00-17.50">
+            <label for="turno2">Turno 2: 17.00 - 17.50</label><br>
+            <input type="radio" id="turno3" name="turno" value="18.10-1.00">
+            <label for="turno3">Turno 3: 18.10 - 19.00</label><br>
+      </div>
+    </div>
+    <input class="Prenota" type="submit" value="Prenota" onclick="alert('La tua prenotazione è stata registrata.')">
+  </form>
+</div>
 <img src="/images/carrara.jpg" alt="Scultura di Carrara." style="width:600px;height:300px;">
 <footer>
   <p>Via Santa Maria 13/e, Carrara (MS) - Carrara Studi Aperti</p>
