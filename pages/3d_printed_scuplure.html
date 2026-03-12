@@ -50,23 +50,38 @@
     <blockquote>"Non stiamo solo stampando oggetti; stiamo dando un corpo fisico al respiro della Terra."</blockquote>
 </div>
 <div class="Iscrizione">
-    <h3>Prenota il tuo posto per il workshop:</h3>
-  <form>
+  <h3>Prenota il tuo posto per il workshop:</h3>
+  
+  <form id="workshopForm">
     <label for="nome">Nome</label><br>
-    <input type="text" id="nome" name="nome" value=""><br>
+    <input type="text" id="nome" name="nome" required><br>
+    
     <label for="cognome">Cognome:</label><br>
-    <input type="text" id="cognome" name="cognome" value=""><br>
+    <input type="text" id="cognome" name="cognome" required><br>
+    
     <div>
-        <input type="radio" id="turno1" name="turno" value="10.00-10.50">
-        <label for="turno1">Turno 1: 10.00 - 10.50</label><br>
-        <input type="radio" id="turno2" name="turno" value="11.00-11.50">
-        <label for="turno2">Turno 2: 11.00 - 11.50</label><br>
-        <input type="radio" id="turno3" name="turno" value="12.10-13.00">
-        <label for="turno3">Turno 3: 12.10 - 13.00</label><br>
+      <input type="radio" id="turno1" name="turno" value="10.00" required>
+      <label for="turno1">Turno 1: 10.00 - 10.50</label><br>
+      
+      <input type="radio" id="turno2" name="turno" value="11.00" required>
+      <label for="turno2">Turno 2: 11.00 - 11.50</label><br>
+      
+      <input type="radio" id="turno3" name="turno" value="12.10" required>
+      <label for="turno3">Turno 3: 12.10 - 13.00</label><br>
     </div>
-    <input class="Prenota" type="submit" value="Prenota" onclick="alert('La tua prenotazione è stata registrata.')">
+    
+    <input class="Prenota" type="submit" value="Prenota" onclick="alert('La tua prenotazione è stata registrata.')" disabled>
   </form>
 </div>
+<script>
+  const form = document.getElementById('workshopForm');
+  const btn = document.querySelector('.Prenota');
+
+  form.addEventListener('input', () => {
+    // checkValidity() returns true if ALL "required" fields are satisfied
+    btn.disabled = !form.checkValidity();
+  });
+</script>
 <img src="/images/3d_sculpture.jpg" alt="Volto stampato in 3D" style="width:600px;height:300px;">
 <footer>
   <p>Via Santa Maria 13/e, Carrara (MS) - Carrara Studi Aperti</p>

@@ -24,7 +24,7 @@
 
 <div id="Info">
   <h2>Orari e luogo</h2>
-  <p>L'Esposizione è accessibile tutti i giorni in Via Santa Maria 13/e, Carrara (MS), presso il <a href="https://www.carrarastudiaperti.it/it">Come Artspace di Carrara.</a></p>
+  <p>L'Esposizione è accessibile liberamente e gratuitamente tutti i giorni in Via Santa Maria 13/e, Carrara (MS), presso il <a href="https://www.carrarastudiaperti.it/it">Come Artspace di Carrara.</a></p>
   <p>Orari di visita: 09.00-20.00</p>
   <p>Indirizzo: Via Plebiscito, 8/A, 54033 Carrara MS</p>
 </div>
@@ -68,60 +68,94 @@
 </div>
 <div class="Iscrizione">
     <h3>Prenota il tuo posto per uno o più workshop:</h3>
-  <form>
+  <form id="workshopForm">
     <label for="nome">Nome</label><br>
-    <input type="text" id="nome" name="nome" value=""><br>
+    <input type="text" id="nome" name="nome" value="" required><br>
     <label for="cognome">Cognome:</label><br>
-    <input type="text" id="cognome" name="cognome" value=""><br>
+    <input type="text" id="cognome" name="cognome" value="" required><br>
     <div class="workshops-container">
       <div class="MultiEvento">
-        <input type="checkbox" id="digital_painting" name="digital_painting" value="Digital Painting">
+        <input type="checkbox" id="digital_painting" name="digital_painting" value="Digital Painting" class="workshop-check">
         <label for="digital_painting"><b>Dipingere l'oceano</b></label><br>
-          <input type="radio" id="turno1" name="turno" value="17.00-17.50">
-          <label for="turno1">Turno 1: 17.00 - 17.50</label><br>
-          <input type="radio" id="turno2" name="turno" value="18.00-18.50">
-          <label for="turno2">Turno 2: 18.00 - 18.50</label><br>
-          <input type="radio" id="turno3" name="turno" value="19.10-20.00">
-          <label for="turno3">Turno 3: 19.10 - 20.00</label><br>
+          <input type="radio" id="turno1_paint" name="turno_paint" value="17.00-17.50" disabled>
+          <label for="turno1_paint">Turno 1: 17.00 - 17.50</label><br>
+          <input type="radio" id="turno2_paint" name="turno_paint" value="18.00-18.50" disabled>
+          <label for="turno2_paint">Turno 2: 18.00 - 18.50</label><br>
+          <input type="radio" id="turno3_paint" name="turno_paint" value="19.10-20.00" disabled>
+          <label for="turno3_paint">Turno 3: 19.10 - 20.00</label><br>
       </div>
       <div class="MultiEvento">
-        <input type="checkbox" id="3d_printed_scuplure" name="3d_printed_scuplure" value="3D Printed Sculpture">
+        <input type="checkbox" id="3d_printed_scuplure" name="3d_printed_scuplure" value="3D Printed Sculpture" class="workshop-check">
         <label for="3d_printed_scuplure"><b>Scultura con materiali ecologici</b></label><br>
-          <input type="radio" id="turno1" name="turno" value="10.00-10.50">
-          <label for="turno1">Turno 1: 10.00 - 10.50</label><br>
-          <input type="radio" id="turno2" name="turno" value="11.00-11.50">
-          <label for="turno2">Turno 2: 11.00 - 11.50</label><br>
-          <input type="radio" id="turno3" name="turno" value="12.10-13.00">
-          <label for="turno3">Turno 3: 12.10 - 13.00</label><br>
+          <input type="radio" id="turno1_3d" name="turno_3d" value="10.00-10.50" disabled>
+          <label for="turno1_3d">Turno 1: 10.00 - 10.50</label><br>
+          <input type="radio" id="turno2_3d" name="turno_3d" value="11.00-11.50" disabled>
+          <label for="turno2_3d">Turno 2: 11.00 - 11.50</label><br>
+          <input type="radio" id="turno3_3d" name="turno_3d" value="12.10-13.00" disabled>
+          <label for="turno3_3d">Turno 3: 12.10 - 13.00</label><br>
       </div>
       <div class="MultiEvento">
-          <input type="checkbox" id="virtual_reality" name="virtual_reality" value="Virtual Reality">
+          <input type="checkbox" id="virtual_reality" name="virtual_reality" value="Virtual Reality" class="workshop-check">
           <label for="virtual_reality"><b>Realtà artistico-letterarie dell'Ottocento</b></label><br>
-            <input type="radio" id="turno1" name="turno" value="11.00-11.50">
-            <label for="turno1">Turno 1: 11.00 - 11.50</label><br>
-            <input type="radio" id="turno2" name="turno" value="12.00-12.50">
-            <label for="turno2">Turno 2: 12.00 - 12.50</label><br>
-            <input type="radio" id="turno3" name="turno" value="13.00-13.50">
-            <label for="turno3">Turno 3: 13.00 - 13.50</label><br>
-            <input type="radio" id="turno4" name="turno" value="14.00-14.50">
-            <label for="turno4">Turno 4: 14.50 - 14.50</label><br>
-            <input type="radio" id="turno5" name="turno" value="15.10-16.00">
-            <label for="turno5">Turno 5: 15.10 - 16.00</label><br>
+            <input type="radio" id="turno1_vr" name="turno_vr" value="11.00-11.50" disabled>
+            <label for="turno1_vr">Turno 1: 11.00 - 11.50</label><br>
+            <input type="radio" id="turno2_vr" name="turno_vr" value="12.00-12.50" disabled>
+            <label for="turno2_vr">Turno 2: 12.00 - 12.50</label><br>
+            <input type="radio" id="turno3_vr" name="turno_vr" value="13.00-13.50" disabled>
+            <label for="turno3_vr">Turno 3: 13.00 - 13.50</label><br>
+            <input type="radio" id="turno4_vr" name="turno_vr" value="14.00-14.50" disabled>
+            <label for="turno4_vr">Turno 4: 14.50 - 14.50</label><br>
+            <input type="radio" id="turno5_vr" name="turno_vr" value="15.10-16.00" disabled>
+            <label for="turno5_vr">Turno 5: 15.10 - 16.00</label><br>
       </div>
       <div class="MultiEvento">
-          <input type="checkbox" id="spatial_video-sound_art" name="spatial_video-sound_art" value="Spatial video-sound art">
+          <input type="checkbox" id="check_video" name="spatial_video-sound_art" value="Spatial video-sound art" class="workshop-check">
           <label for="spatial_video-sound_art"><b>Brian Eno 2.0: ripensare l'ambient visuale e sonoro</b></label><br>
-            <input type="radio" id="turno1" name="turno" value="16.00-16.50">
-            <label for="turno1">Turno 1: 16.00 - 16.50</label><br>
-            <input type="radio" id="turno2" name="turno" value="17.00-17.50">
-            <label for="turno2">Turno 2: 17.00 - 17.50</label><br>
-            <input type="radio" id="turno3" name="turno" value="18.10-1.00">
-            <label for="turno3">Turno 3: 18.10 - 19.00</label><br>
+            <input type="radio" id="turno1_video" name="turno_video" value="16.00-16.50" disabled>
+            <label for="turno1_video">Turno 1: 16.00 - 16.50</label><br>
+            <input type="radio" id="turno2_video" name="turno_video" value="17.00-17.50" disabled>
+            <label for="turno2_video">Turno 2: 17.00 - 17.50</label><br>
+            <input type="radio" id="turno3_video" name="turno_video" value="18.10-1.00" disabled>
+            <label for="turno3_video">Turno 3: 18.10 - 19.00</label><br>
       </div>
     </div>
-    <input class="Prenota" type="submit" value="Prenota" onclick="alert('La tua prenotazione è stata registrata.')">
+    <input class="Prenota" type="submit" value="Prenota" onclick="alert('La tua prenotazione è stata registrata.')" disabled>
   </form>
 </div>
+<script>
+  const form = document.getElementById('workshopForm');
+  const submitBtn = document.querySelector('.Prenota');
+  const eventBlocks = document.querySelectorAll('.MultiEvento');
+
+  form.addEventListener('input', () => {
+    let atLeastOneValidWorkshop = false;
+
+    eventBlocks.forEach(block => {
+      const checkbox = block.querySelector('.workshop-check');
+      const radios = block.querySelectorAll('input[type="radio"]');
+      const isChecked = checkbox.checked;
+
+      // Point 2: Deactivate radios if checkbox is not ticked
+      radios.forEach(radio => {
+        radio.disabled = !isChecked;
+        // If user unchecks the workshop, clear the radio selection too
+        if (!isChecked) radio.checked = false;
+      });
+
+      // Point 1: Check if this specific workshop is fully filled (Box + Radio)
+      const radioSelected = block.querySelector('input[type="radio"]:checked');
+      if (isChecked && radioSelected) {
+        atLeastOneValidWorkshop = true;
+      }
+    });
+
+    // Final Validation: Names must be filled + Point 1 logic
+    const nameFilled = document.getElementById('nome').value.trim() !== "";
+    const surnameFilled = document.getElementById('cognome').value.trim() !== "";
+
+    submitBtn.disabled = !(nameFilled && surnameFilled && atLeastOneValidWorkshop);
+  });
+</script>
 <img src="/images/carrara.jpg" alt="Scultura di Carrara." style="width:600px;height:300px;">
 <footer>
   <p>Via Santa Maria 13/e, Carrara (MS) - Carrara Studi Aperti</p>
