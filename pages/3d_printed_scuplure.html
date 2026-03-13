@@ -51,14 +51,15 @@
 </div>
 <div class="Iscrizione">
   <h3>Prenota il tuo posto per il workshop:</h3>
-  
   <form id="workshopForm">
     <label for="nome">Nome</label><br>
     <input type="text" id="nome" name="nome" required><br>
-    
     <label for="cognome">Cognome:</label><br>
     <input type="text" id="cognome" name="cognome" required><br>
-    
+    <div class="selezione-settimana">
+      <label for="settimana_eventi">Selezionare la settimana nella quale partecipare:</label><br>
+      <input type="week" id="settimana_eventi" name="settimana_eventi" min="2026-W17" max="2026-W48" required><br>
+    </div>
     <div>
       <input type="radio" id="turno1" name="turno" value="10.00" required>
       <label for="turno1">Turno 1: 10.00 - 10.50</label><br>
@@ -74,6 +75,34 @@
   </form>
 </div>
 <script>
+  /*
+  Automatic adjust of the minimum week for booking
+  */
+  // 1. Get the input element
+  const input = document.getElementById('settimana_eventi');
+
+  // 2. Calculate Current ISO Week (YYYY-Www)
+  const now = new Date();
+  const dayNum = (now.getUTCDay() + 6) % 7;
+  now.setUTCDate(now.getUTCDate() - dayNum + 3);
+  const year = now.getUTCFullYear();
+  const firstThursday = now.getTime();
+  const startOfYear = new Date(year, 0, 1);
+  
+  // Find first Thursday of the year
+  const firstThursdayOfYear = new Date(year, 0, 1 + ((4 - startOfYear.getDay() + 7) % 7));
+  const weekNum = 1 + Math.round((firstThursday - firstThursdayOfYear) / 604800000);
+  
+  const currentWeekStr = `${year}-W${weekNum.toString().padStart(2, '0')}`;
+
+  // 3. Dynamic logic: Only push the 'min' forward if today is LATER than Week 17
+  if (currentWeekStr > input.min) {
+    input.min = currentWeekStr;
+  }
+
+  /*
+  Check for submitting only if all the data are available
+  */
   const form = document.getElementById('workshopForm');
   const btn = document.querySelector('.Prenota');
 

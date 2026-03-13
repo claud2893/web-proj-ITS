@@ -102,6 +102,9 @@
     gap: 20px;            
     margin-top: 20px;
     }
+    .selezione-settimana {
+        padding: 8px;
+    }
     .MultiEvento {
     flex: 1;              
     min-width: 250px;     
