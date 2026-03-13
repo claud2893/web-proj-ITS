@@ -130,24 +130,34 @@
   form.addEventListener('input', () => {
     let atLeastOneValidWorkshop = false;
 
-    eventBlocks.forEach(block => {
+    // Outer loop: iterating through each workshop block
+    for (let i = 0; i < eventBlocks.length; i++) {
+      // We manually define 'block' by accessing the index 'i'
+      const block = eventBlocks[i]; 
+      
       const checkbox = block.querySelector('.workshop-check');
       const radios = block.querySelectorAll('input[type="radio"]');
       const isChecked = checkbox.checked;
 
-      // Point 2: Deactivate radios if checkbox is not ticked
-      radios.forEach(radio => {
+      // Inner loop (Point 2): Deactivate radios if checkbox is not ticked
+      for (let j = 0; j < radios.length; j++) {
+        // We manually define 'radio' by accessing the index 'j'
+        const radio = radios[j];
+        
         radio.disabled = !isChecked;
+        
         // If user unchecks the workshop, clear the radio selection too
-        if (!isChecked) radio.checked = false;
-      });
+        if (!isChecked) {
+          radio.checked = false;
+        }
+      }
 
       // Point 1: Check if this specific workshop is fully filled (Box + Radio)
       const radioSelected = block.querySelector('input[type="radio"]:checked');
       if (isChecked && radioSelected) {
         atLeastOneValidWorkshop = true;
       }
-    });
+    };
 
     // Final Validation: Names must be filled + Point 1 logic
     const nameFilled = document.getElementById('nome').value.trim() !== "";
