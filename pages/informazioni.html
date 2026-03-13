@@ -73,6 +73,10 @@
     <input type="text" id="nome" name="nome" value="" required><br>
     <label for="cognome">Cognome:</label><br>
     <input type="text" id="cognome" name="cognome" value="" required><br>
+    <div class="selezione-settimana">
+      <label for="settimana_eventi">Selezionare la settimana nella quale partecipare:</label><br>
+      <input type="week" id="settimana_eventi" name="settimana_eventi" min="2026-W17" max="2026-W48" required><br>
+    </div>
     <div class="workshops-container">
       <div class="MultiEvento">
         <input type="checkbox" id="digital_painting" name="digital_painting" value="Digital Painting" class="workshop-check">
@@ -123,6 +127,32 @@
   </form>
 </div>
 <script>
+  /*
+  Automatic adjust of the minimum week for booking
+  */
+  // 1. Get the input element for the week selection
+  const input = document.getElementById('settimana_eventi');
+
+  // 2. Calculate Current ISO Week (YYYY-Www)
+  const now = new Date();
+  // Calculate Monday and shift to Thursday
+  const dayNum = (now.getUTCDay() + 6) % 7;
+  now.setUTCDate(now.getUTCDate() - dayNum + 3);
+  // Variables for this year, the latest Thursday and the start of the year
+  const year = now.getUTCFullYear();
+  const firstThursday = now.getTime();
+  const startOfYear = new Date(year, 0, 1);
+  
+  // Find first Thursday of the year and subtract it from today's Thursday (= calculates how many weeks have passed, and so in which week we are) 
+  const firstThursdayOfYear = new Date(year, 0, 1 + ((4 - startOfYear.getDay() + 7) % 7));
+  const weekNum = 1 + Math.round((firstThursday - firstThursdayOfYear) / 604800000);
+  // Format to use it in HTML attribute value
+  const currentWeekStr = `${year}-W${weekNum.toString().padStart(2, '0')}`;
+
+  // 3. Dynamic logic: Only push the 'min' forward if today is LATER than Week 17
+  if (currentWeekStr > input.min) {
+    input.min = currentWeekStr;
+  }
   const form = document.getElementById('workshopForm');
   const submitBtn = document.querySelector('.Prenota');
   const eventBlocks = document.querySelectorAll('.MultiEvento');
@@ -158,12 +188,12 @@
         atLeastOneValidWorkshop = true;
       }
     };
-
     // Final Validation: Names must be filled + Point 1 logic
     const nameFilled = document.getElementById('nome').value.trim() !== "";
     const surnameFilled = document.getElementById('cognome').value.trim() !== "";
+    const weekChosen = document.getElementById('settimana_eventi').checkValidity();
 
-    submitBtn.disabled = !(nameFilled && surnameFilled && atLeastOneValidWorkshop);
+    submitBtn.disabled = !(nameFilled && surnameFilled && weekChosen && atLeastOneValidWorkshop);
   });
 </script>
 <img src="/images/carrara.jpg" alt="Scultura di Carrara." style="width:600px;height:300px;">

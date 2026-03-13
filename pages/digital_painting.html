@@ -75,28 +75,29 @@
   /*
   Automatic adjust of the minimum week for booking
   */
-  // 1. Get the input element
+  // 1. Get the input element for the week selection
   const input = document.getElementById('settimana_eventi');
 
   // 2. Calculate Current ISO Week (YYYY-Www)
   const now = new Date();
+  // Calculate Monday and shift to Thursday
   const dayNum = (now.getUTCDay() + 6) % 7;
   now.setUTCDate(now.getUTCDate() - dayNum + 3);
+  // Variables for this year, the latest Thursday and the start of the year
   const year = now.getUTCFullYear();
   const firstThursday = now.getTime();
   const startOfYear = new Date(year, 0, 1);
   
-  // Find first Thursday of the year
+  // Find first Thursday of the year and subtract it from today's Thursday (= calculates how many weeks have passed, and so in which week we are) 
   const firstThursdayOfYear = new Date(year, 0, 1 + ((4 - startOfYear.getDay() + 7) % 7));
   const weekNum = 1 + Math.round((firstThursday - firstThursdayOfYear) / 604800000);
-  
+  // Format to use it in HTML attribute value
   const currentWeekStr = `${year}-W${weekNum.toString().padStart(2, '0')}`;
 
   // 3. Dynamic logic: Only push the 'min' forward if today is LATER than Week 17
   if (currentWeekStr > input.min) {
     input.min = currentWeekStr;
   }
-
   /*
   Check for submitting only if all the data are available
   */
