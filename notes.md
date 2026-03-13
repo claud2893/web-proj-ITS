@@ -1,5 +1,5 @@
 ## Implementations to do
-- selection of the week for workshops enrollment
+- selection of the week for workshops enrollment in informazioni.html
 - database for workshops
 -- send data with an "onsubmit" function
 
