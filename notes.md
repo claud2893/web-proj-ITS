@@ -1,6 +1,6 @@
 ## Implementations to do
-- separate the script in .js files
 - database for workshops (json)
+-- week >> workshop >> turn >> name + lastname +  email
 -- send data with an "onsubmit" function
 -- query page to read data
 
