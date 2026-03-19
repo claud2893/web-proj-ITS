@@ -1,12 +1,4 @@
 /*
-Attivazione menu a tendina
-*/
-const myMenu = document.querySelector('.Menu');
-myMenu.addEventListener('click', function() {
-    this.classList.toggle('active');
-});
-
-/*
 Correzione automatica della settimana minima per la prenotazione
 */
 
