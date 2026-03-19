@@ -40,17 +40,26 @@ btn.disabled = !form.checkValidity();
 /*
 Generazione del JSON
 */
-const titolo = document.getElementsByClassName('Descrizione');
+const jsonResults = [];
+const workshopTitle = document.querySelector('.Descrizione h2').textContent;
 form.addEventListener('submit', function(event) {
     event.preventDefault();
-
+    const formData = new FormData(form);
     const data = {
-    "settimana_eventi": formData.get('settimana_eventi'),
-    "workshop": titolo.getElementByTagName(h2),
-    "turno": formData.get('turno'),
-    "nome": formData.get('nome'),
-    "cognome": formData.get('cognome'),
-    "email": formData.get('email')
+        "settimana_eventi": formData.get('settimana_eventi'),
+        "workshop": workshopTitle,
+        "turno": formData.get('turno'),
+        "nome": formData.get('nome'),
+        "cognome": formData.get('cognome'),
+        "email": formData.get('email')
   };
-  // Inserire output di prova
+    // 4. Convert the single submission to JSON and add it to our array
+    jsonResults.push(JSON.stringify(data));
+
+    // 5. Create the output string and show the alert INSIDE the event listener
+    const finalOutput = jsonResults.join(';\n');
+    console.log(finalOutput);
+    
+    // Alert the total number of bookings and the JSON output
+    alert("Generated " + jsonResults.length + " bookings:\n\n" + finalOutput);
   });

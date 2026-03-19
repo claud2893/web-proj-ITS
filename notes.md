@@ -1,7 +1,6 @@
 ## Implementations to do
 - database for workshops (json)
--- week >> workshop >> turn >> name + lastname +  email
--- send data with an "onsubmit" function
+-- implement function on script_informazioni.js
 -- query page to read data
 
 ## Eventual
