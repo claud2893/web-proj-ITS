@@ -38,14 +38,18 @@ btn.disabled = !form.checkValidity();
 })
 
 /*
-Generazione del JSON
+Controllo e generazione del JSON
 */
-const jsonResults = [];
 const workshopTitle = document.querySelector('.Descrizione h2').textContent;
+
+// Caricamento localStorage o apertura nuovo array se vuoto
+let prenotazioni = JSON.parse(localStorage.getItem('databasePrenotazioni')) || [];
+
+// Creazione variabile per la nuova prenotazione
 form.addEventListener('submit', function(event) {
     event.preventDefault();
     const formData = new FormData(form);
-    const data = {
+    const nuovaPrenotazione = {
         "settimana_eventi": formData.get('settimana_eventi'),
         "workshop": workshopTitle,
         "turno": formData.get('turno'),
@@ -53,13 +57,25 @@ form.addEventListener('submit', function(event) {
         "cognome": formData.get('cognome'),
         "email": formData.get('email')
   };
-    // 4. Convert the single submission to JSON and add it to our array
-    jsonResults.push(JSON.stringify(data));
+  
+// Controllo se la nuova prenotazione è in realtà già presente in localStorage
+const isDuplicate = prenotazioni.some(p => 
+        p.email === nuovaPrenotazione.email && 
+        p.settimana_eventi === nuovaPrenotazione.settimana_eventi &&
+        p.turno === nuovaPrenotazione.turno &&
+        p.workshop === nuovaPrenotazione.workshop
+    );
 
-    // 5. Create the output string and show the alert INSIDE the event listener
-    const finalOutput = jsonResults.join(';\n');
-    console.log(finalOutput);
-    
-    // Alert the total number of bookings and the JSON output
-    alert("Generated " + jsonResults.length + " bookings:\n\n" + finalOutput);
-  });
+    if (isDuplicate) {
+        alert("La tua prenotazione risulta già presente, pertanto non è stata registrata.");
+    } else {
+      // Aggiunta al database e salvataggio in local storage
+      prenotazioni.push(nuovaPrenotazione);
+      localStorage.setItem('databasePrenotazioni', JSON.stringify(prenotazioni));
+      alert("La tua prenotazione è stata registrata con successo!");
+
+      // Pulizia campi form
+      form.reset();
+        btnPrenota.disabled = true;
+    }
+});
