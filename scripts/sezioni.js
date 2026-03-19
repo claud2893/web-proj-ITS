@@ -36,3 +36,21 @@ form.addEventListener('input', () => {
 // checkValidity() restituisce true se tutti i campi "required" sono completi
 btn.disabled = !form.checkValidity();
 })
+
+/*
+Generazione del JSON
+*/
+const titolo = document.getElementsByClassName('Descrizione');
+form.addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const data = {
+    "settimana_eventi": formData.get('settimana_eventi'),
+    "workshop": titolo.getElementByTagName(h2),
+    "turno": formData.get('turno'),
+    "nome": formData.get('nome'),
+    "cognome": formData.get('cognome'),
+    "email": formData.get('email')
+  };
+  // Inserire output di prova
+  });
