@@ -1,4 +1,12 @@
 /*
+Attivazione menu a tendina
+*/
+const myMenu = document.querySelector('.Menu');
+myMenu.addEventListener('click', function() {
+    this.classList.toggle('active');
+});
+
+/*
 Correzione automatica della settimana minima per la prenotazione
 */
 
@@ -70,4 +78,80 @@ const validEmail = document.getElementById('email').checkValidity();
 const weekChosen = document.getElementById('settimana_eventi').checkValidity();
 
 submitBtn.disabled = !(nameFilled && surnameFilled && weekChosen && validEmail && atLeastOneValidWorkshop);
+});
+
+/*
+Controllo e generazione del JSON
+*/
+
+// Caricamento localStorage o apertura nuovo array se vuoto
+let prenotazioni = JSON.parse(localStorage.getItem('databasePrenotazioni')) || [];
+
+form.addEventListener('submit', function(event) {
+    event.preventDefault();
+    const formData = new FormData(form);
+    
+    // 1. Estrazione dei dati comuni a tutte le prenotazioni (valore 'turno' gestito più in basso)
+    const settimana = formData.get('settimana_eventi');
+    const nome = formData.get('nome');
+    const cognome = formData.get('cognome');
+    const email = formData.get('email');
+
+    // 2. Recupero di tutti i workshop selezionati
+    const selectedWorkshops = document.querySelectorAll('input[type="checkbox"]:checked');
+
+    // Contatori per dare un feedback preciso all'utente
+    let addedCount = 0;
+    let duplicateCount = 0;
+
+    // 3. Iterazione su ogni workshop selezionato per generare i JSON
+    selectedWorkshops.forEach(checkbox => {
+        const workshopValue = checkbox.value; 
+
+        // Trova il valore selezionato per il turno
+        const parentDiv = checkbox.closest('.MultiEvento');
+        const radioSelezionato = parentDiv.querySelector('input[type="radio"]:checked');
+        const turnoValue = radioSelezionato.value;
+
+        const nuovaPrenotazione = {
+            "settimana_eventi": settimana,
+            "workshop": workshopValue,
+            "turno": turnoValue, 
+            "nome": nome,
+            "cognome": cognome,
+            "email": email
+        };
+
+        // Controllo duplicati per ogni singola prenotazione con aggiornamento contatori
+        const isDuplicate = prenotazioni.some(p => 
+            p.email === nuovaPrenotazione.email && 
+            p.settimana_eventi === nuovaPrenotazione.settimana_eventi &&
+            p.turno === nuovaPrenotazione.turno &&
+            p.workshop === nuovaPrenotazione.workshop
+        );
+
+        if (isDuplicate) {
+            duplicateCount++;
+        } else {
+            prenotazioni.push(nuovaPrenotazione);
+            addedCount++;
+        }
+    });
+
+    // 4. Salvataggio in localStorage e gestione degli alert
+    if (addedCount > 0) {
+        localStorage.setItem('databasePrenotazioni', JSON.stringify(prenotazioni));
+        
+        // Pulizia form
+        form.reset();
+        if (submitBtn) submitBtn.disabled = true;
+
+        if (duplicateCount > 0) {
+            alert(`Operazione completata: ${addedCount} nuove prenotazioni salvate. ${duplicateCount} risultavano già presenti e sono state ignorate.`);
+        } else {
+            alert("Tutte le tue prenotazioni sono state registrate con successo!");
+        }
+    } else if (duplicateCount > 0) {
+        alert("Tutte le prenotazioni selezionate risultano già presenti nel sistema, pertanto non sono state registrate.");
+    }
 });
